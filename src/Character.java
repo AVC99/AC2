@@ -4,14 +4,14 @@ public class Character {
     private String name;
     private int level;
     private int gold;
-    private double maxWheight;
+    private double maxWeight;
     private ArrayList<Item> inventory;
 
-    public Character(String name, int level, int gold, double maxWheight, ArrayList<Item> inventory) {
+    public Character(String name, int level, int gold, double maxWeight, ArrayList<Item> inventory) {
         this.name = name;
         this.level = level;
         this.gold = gold;
-        this.maxWheight = maxWheight;
+        this.maxWeight = maxWeight;
         this.inventory = inventory;
     }
 
@@ -27,11 +27,14 @@ public class Character {
         return gold;
     }
 
-    public double getMaxWheight() {
-        return maxWheight;
+    public double getMaxWeight() {
+        return maxWeight;
     }
 
     public ArrayList<Item> getInventory() {
         return inventory;
+    }
+    public void addItem(Item item){
+        this.inventory.add(item);
     }
 }

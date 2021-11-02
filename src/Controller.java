@@ -48,10 +48,13 @@ public class Controller {
                 p.showCharItems();
                 break;
             case 4:
+                p.showCharAsset();
                 break;
             case 5:
+                p.checkCharWheight();
                 break;
             case 6:
+                p.addItemToChar();
                 break;
             case 7:
                 break;

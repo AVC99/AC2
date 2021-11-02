@@ -8,7 +8,9 @@ public class Party {
     private String description;
     private ArrayList<Character> members;
 
-
+    public String getName() {
+        return name;
+    }
 
     public Party(String name, String description, ArrayList<Character> members) {
         this.name = name;
@@ -137,7 +139,7 @@ public class Party {
                         System.out.println(c.getName()+" can't carry that much extra weight! ");
                     }else{
                         c.addItem(newItem);
-                        System.out.println(c.getName()+"would be able to carry that weight.");
+                        System.out.println(c.getName()+" now carries a "+newItemName);
                     }
                     found = true;
                 }

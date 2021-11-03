@@ -41,9 +41,9 @@ public class Party {
     public void showCharItems(){
         boolean found=false;
         Scanner scanner= new Scanner(System.in);
-        System.out.println("Which character? ");
-        String name=scanner.next();
         try {
+            System.out.println("Which character? ");
+            String name=scanner.next();
             for (Character c : this.members) {
                 if (c.getName().toLowerCase().contains(name.toLowerCase())) {
                     System.out.println(c.getName()+" has the following items:\n");
@@ -65,9 +65,10 @@ public class Party {
         boolean found=false;
         int totalgold=0;
         Scanner scanner= new Scanner(System.in);
-        System.out.println("Which character? ");
-        String name=scanner.next();
         try {
+            System.out.println("Which character? ");
+            String name=scanner.next();
+
             for (Character c : this.members) {
                 if (c.getName().toLowerCase().contains(name.toLowerCase())) {
                     for (Item i : c.getInventory()) {
@@ -88,19 +89,19 @@ public class Party {
     public void checkCharWheight(){
         boolean found=false;
         Scanner scanner= new Scanner(System.in);
-        System.out.println("Which character? ");
-        String name=scanner.next();
-        System.out.println("How much extra weight? ");
-        double extraWeight = scanner.nextDouble();
-        double currentWheight = 0;
         try {
+            System.out.println("Which character? ");
+            String name=scanner.next();
+            System.out.println("How much extra weight? ");
+            double extraWeight = scanner.nextDouble();
+            double currentWeight = 0;
             for (Character c : this.members) {
                 if (c.getName().toLowerCase().contains(name.toLowerCase())) {
                     for (Item i : c.getInventory()) {
-                        currentWheight+=i.getWeight();
-                        System.out.println(i.getName()+ i.getWeight()+" ---"+currentWheight+"/"+c.getMaxWeight());
+                        currentWeight+=i.getWeight();
+                        System.out.println(i.getName()+ i.getWeight()+" ---"+currentWeight+"/"+c.getMaxWeight());
                     }
-                    if (currentWheight+extraWeight > c.getMaxWeight()){
+                    if (currentWeight+extraWeight > c.getMaxWeight()){
                         System.out.println(c.getName()+" can't carry that much extra weight! ");
                     }else{
                         System.out.println(c.getName()+" would be able to carry that weight.");
@@ -119,23 +120,23 @@ public class Party {
     public void addItemToChar(){
         boolean found= false;
         Scanner scanner= new Scanner(System.in);
-        System.out.println("Who will get the item? ");
-        String name=scanner.next();
-        System.out.println("Enter the item's name: ");
-        String newItemName= scanner.next();
-        System.out.println("Enter the item's value: ");
-        int newItemValue=scanner.nextInt();
-        System.out.println("Enter the item's weight: ");
-        double newItemWeight= scanner.nextDouble();
-        Item newItem= new Item(newItemName,newItemValue,newItemWeight);
-        double currentWheight=0;
         try {
+            System.out.println("Who will get the item? ");
+            String name=scanner.next();
+            System.out.println("Enter the item's name: ");
+            String newItemName= scanner.next();
+            System.out.println("Enter the item's value: ");
+            int newItemValue=scanner.nextInt();
+            System.out.println("Enter the item's weight: ");
+            double newItemWeight= scanner.nextDouble();
+            Item newItem= new Item(newItemName,newItemValue,newItemWeight);
+            double currentWeight=0;
             for (Character c : this.members) {
                 if (c.getName().toLowerCase().contains(name.toLowerCase())) {
                     for (Item i : c.getInventory()) {
-                        currentWheight+=i.getWeight();
+                        currentWeight+=i.getWeight();
                     }
-                    if (currentWheight+newItemWeight > c.getMaxWeight()){
+                    if (currentWeight+newItemWeight > c.getMaxWeight()){
                         System.out.println(c.getName()+" can't carry that much extra weight! ");
                     }else{
                         c.addItem(newItem);

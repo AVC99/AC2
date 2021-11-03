@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Controller {
 
     private Menu menu = new Menu();
-    Party p;
+    private Party p;
 
     public void loadFiles(){
         Scanner scanner= new Scanner(System.in);

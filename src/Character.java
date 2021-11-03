@@ -7,7 +7,7 @@ public class Character {
     private double maxWeight;
     private ArrayList<Item> inventory;
 
-    public Character(String name, int level, int gold, double maxWeight, ArrayList<Item> inventory) {
+    private Character(String name, int level, int gold, double maxWeight, ArrayList<Item> inventory) {
         this.name = name;
         this.level = level;
         this.gold = gold;
@@ -34,6 +34,7 @@ public class Character {
     public ArrayList<Item> getInventory() {
         return inventory;
     }
+
     public void addItem(Item item){
         this.inventory.add(item);
     }

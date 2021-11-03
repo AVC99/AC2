@@ -5,10 +5,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class LoadFromFile {
-
-    private String filename;
-
+public class ReadWriteFile {
+    
     public Party loadParty(String name){
         Party party=null;
         Gson gson= new Gson();

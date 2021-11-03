@@ -12,7 +12,7 @@ public class Controller {
         System.out.println("Loading party file...\n");
         String name = "party.json";
         //String name = scanner.next();------------------------------------------------------------------------ Canviar al final
-        p = new LoadFromFile().loadParty(name);
+        p = new ReadWriteFile().loadParty(name);
         System.out.println("Party name: "+ p.getName());
         System.out.println("Party description: " + p.getDescription());
     }catch (InputMismatchException e){
@@ -43,9 +43,9 @@ public class Controller {
             case 2 -> p.showAvgLvl();
             case 3 -> p.showCharItems();
             case 4 -> p.showCharAsset();
-            case 5 -> p.checkCharWheight();
+            case 5 -> p.checkCharWeight();
             case 6 -> p.addItemToChar();
-            case 7 -> new LoadFromFile().writeFile(p);
+            case 7 -> new ReadWriteFile().writeFile(p);
         }
     }
 

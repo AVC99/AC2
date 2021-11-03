@@ -1,21 +1,18 @@
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 public class Party {
     private String name;
     private String description;
     private ArrayList<Character> members;
 
-    public String getName() {
-        return name;
-    }
-
-    public Party(String name, String description, ArrayList<Character> members) {
+    private Party(String name, String description, ArrayList<Character> members) {
         this.name = name;
         this.description = description;
         this.members = members;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public ArrayList<Character> getMembers() {
@@ -25,6 +22,7 @@ public class Party {
     public String getDescription() {
         return description;
     }
+
     public void showCharacters(){
         System.out.println();
         for(int i=0; i<this.members.size();i++){
@@ -56,14 +54,14 @@ public class Party {
             if (!found) {
                 System.out.println("Couldn't find the character.");
             }
-        }catch (InputMismatchException e){
+        }catch (NoSuchElementException e){
             System.out.println("Please enter a correct value");
             e.printStackTrace();
         }
     }
     public void showCharAsset(){
         boolean found=false;
-        int totalgold=0;
+        int totalGold=0;
         Scanner scanner= new Scanner(System.in);
         try {
             System.out.println("Which character? ");
@@ -72,21 +70,21 @@ public class Party {
             for (Character c : this.members) {
                 if (c.getName().toLowerCase().contains(name.toLowerCase())) {
                     for (Item i : c.getInventory()) {
-                       totalgold+=i.getValue();
+                       totalGold+=i.getValue();
                     }
-                    System.out.println(c.getName()+" holds assets for a total of "+totalgold+" gold pieces");
+                    System.out.println(c.getName()+" holds assets for a total of "+totalGold+" gold pieces");
                     found = true;
                 }
             }
             if (!found) {
                 System.out.println("Couldn't find the character.");
             }
-        }catch (InputMismatchException e){
+        }catch (NoSuchElementException e){
             System.out.println("Please enter a correct value");
             e.printStackTrace();
         }
     }
-    public void checkCharWheight(){
+    public void checkCharWeight(){
         boolean found=false;
         Scanner scanner= new Scanner(System.in);
         try {

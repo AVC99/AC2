@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 
 public class Party {
     private String name;
@@ -36,12 +36,8 @@ public class Party {
         }
         System.out.println("\nThe party's average level is "+total/this.members.size());
     }
-    public void showCharItems(){
+    public void showCharItems(String name){
         boolean found=false;
-        Scanner scanner= new Scanner(System.in);
-        try {
-            System.out.println("Which character? ");
-            String name=scanner.next();
             for (Character c : this.members) {
                 if (c.getName().toLowerCase().contains(name.toLowerCase())) {
                     System.out.println(c.getName()+" has the following items:\n");
@@ -54,20 +50,13 @@ public class Party {
             if (!found) {
                 System.out.println("Couldn't find the character.");
             }
-        }catch (NoSuchElementException e){
-            System.out.println("Please enter a correct value");
-            e.printStackTrace();
-        }
-    }
-    public void showCharAsset(){
-        boolean found=false;
-        int totalGold=0;
-        Scanner scanner= new Scanner(System.in);
-        try {
-            System.out.println("Which character? ");
-            String name=scanner.next();
 
-            for (Character c : this.members) {
+    }
+    public void showCharAsset(String name){
+        boolean found=false;
+
+              for (Character c : this.members) {
+                  int totalGold=0;
                 if (c.getName().toLowerCase().contains(name.toLowerCase())) {
                     for (Item i : c.getInventory()) {
                        totalGold+=i.getValue();
@@ -79,76 +68,50 @@ public class Party {
             if (!found) {
                 System.out.println("Couldn't find the character.");
             }
-        }catch (NoSuchElementException e){
-            System.out.println("Please enter a correct value");
-            e.printStackTrace();
-        }
     }
-    public void checkCharWeight(){
+    public void checkCharWeight(String name, Double extraWeight){
         boolean found=false;
-        Scanner scanner= new Scanner(System.in);
-        try {
-            System.out.println("Which character? ");
-            String name=scanner.next();
-            System.out.println("How much extra weight? ");
-            double extraWeight = scanner.nextDouble();
+        for (Character c : this.members) {
             double currentWeight = 0;
-            for (Character c : this.members) {
-                if (c.getName().toLowerCase().contains(name.toLowerCase())) {
-                    for (Item i : c.getInventory()) {
-                        currentWeight+=i.getWeight();
-                        System.out.println(i.getName()+ i.getWeight()+" ---"+currentWeight+"/"+c.getMaxWeight());
-                    }
-                    if (currentWeight+extraWeight > c.getMaxWeight()){
-                        System.out.println(c.getName()+" can't carry that much extra weight! ");
-                    }else{
-                        System.out.println(c.getName()+" would be able to carry that weight.");
-                    }
-                    found = true;
+            if (c.getName().toLowerCase().contains(name.toLowerCase())) {
+                for (Item i : c.getInventory()) {
+                    currentWeight+=i.getWeight();
+                    //System.out.println(i.getName()+ i.getWeight()+" ---"+currentWeight+"/"+c.getMaxWeight());
                 }
+                if (currentWeight+extraWeight > c.getMaxWeight()){
+                    System.out.println(c.getName()+" can't carry that much extra weight! ");
+                }else{
+                    System.out.println(c.getName()+" would be able to carry that weight.");
+                }
+                found = true;
             }
-            if (!found) {
-                System.out.println("Couldn't find the character.");
-            }
-        }catch (InputMismatchException e){
-            System.out.println("Please enter a correct value");
-            e.printStackTrace();
         }
+        if (!found) {
+            System.out.println("Couldn't find the character.");
+        }
+
     }
-    public void addItemToChar(){
+    public void addItemToChar(String name, Item newItem){
         boolean found= false;
-        Scanner scanner= new Scanner(System.in);
-        try {
-            System.out.println("Who will get the item? ");
-            String name=scanner.next();
-            System.out.println("Enter the item's name: ");
-            String newItemName= scanner.next();
-            System.out.println("Enter the item's value: ");
-            int newItemValue=scanner.nextInt();
-            System.out.println("Enter the item's weight: ");
-            double newItemWeight= scanner.nextDouble();
-            Item newItem= new Item(newItemName,newItemValue,newItemWeight);
+
+        for (Character c : this.members) {
             double currentWeight=0;
-            for (Character c : this.members) {
-                if (c.getName().toLowerCase().contains(name.toLowerCase())) {
-                    for (Item i : c.getInventory()) {
-                        currentWeight+=i.getWeight();
-                    }
-                    if (currentWeight+newItemWeight > c.getMaxWeight()){
-                        System.out.println(c.getName()+" can't carry that much extra weight! ");
-                    }else{
-                        c.addItem(newItem);
-                        System.out.println(c.getName()+" now carries a "+newItemName);
-                    }
-                    found = true;
+            if (c.getName().toLowerCase().contains(name.toLowerCase())) {
+                for (Item i : c.getInventory()) {
+                    currentWeight+=i.getWeight();
                 }
+                if (currentWeight+newItem.getWeight() > c.getMaxWeight()){
+                    System.out.println(c.getName()+" can't carry that much extra weight! ");
+                }else{
+                    c.addItem(newItem);
+                    System.out.println(c.getName()+" now carries a "+newItem.getName());
+                }
+                found = true;
             }
-            if (!found) {
-                System.out.println("Couldn't find the character.");
-            }
-        }catch (InputMismatchException e){
-            System.out.println("Please enter a correct value");
-            e.printStackTrace();
         }
+        if (!found) {
+            System.out.println("Couldn't find the character.");
+        }
+
     }
 }

@@ -6,10 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ReadWriteFile {
-    
+    private Gson gson=new Gson();
+
     public Party loadParty(String name){
         Party party=null;
-        Gson gson= new Gson();
         try{
            party=gson.fromJson(new FileReader(name),Party.class);
 
@@ -19,9 +19,7 @@ public class ReadWriteFile {
         }
         return party;
     }
-
     public void writeFile(Party party){
-        Gson gson =new Gson();
         String filename="test.json";
         try (FileWriter writer = new FileWriter(filename)) {
             gson.toJson(party, writer);

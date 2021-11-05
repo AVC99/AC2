@@ -25,7 +25,7 @@ public class ReadWriteFile {
         String filename="test.json";
         try (FileWriter writer = new FileWriter(filename)) {
             gson.toJson(party, writer);
-            System.out.println("Updating "+filename+"...");
+            System.out.println("\nUpdating "+filename+"...");
             System.out.println("Shutting down...");
         } catch (IOException e) {
             e.printStackTrace();

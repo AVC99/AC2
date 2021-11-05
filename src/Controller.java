@@ -52,6 +52,8 @@ public class Controller {
                     p.showCharItems(name);
                 }catch (NoSuchElementException e){
                  e.printStackTrace();
+                }finally {
+                    scanner.nextLine();
                 }
             }
             case 4 ->{
@@ -61,6 +63,8 @@ public class Controller {
                     p.showCharAsset(name);
                 }catch (NoSuchElementException e){
                     e.printStackTrace();
+                }finally {
+                    scanner.nextLine();
                 }
             }
             case 5 -> {
@@ -74,6 +78,8 @@ public class Controller {
                 }catch (InputMismatchException e){
                     System.out.println("Please enter a correct value");
                     e.printStackTrace();
+                }finally {
+                    scanner.nextLine();
                 }
             }
             case 6 -> {
@@ -91,6 +97,8 @@ public class Controller {
                 }catch (InputMismatchException e){
                     System.out.println("Please enter a correct value");
                     e.printStackTrace();
+                }finally {
+                    scanner.nextLine();
                 }
             }
             case 7 -> new ReadWriteFile().writeFile(p);

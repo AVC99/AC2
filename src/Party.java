@@ -40,7 +40,7 @@ public class Party {
         boolean found=false;
             for (Character c : this.members) {
                 if (c.getName().toLowerCase().contains(name.toLowerCase())) {
-                    System.out.println(c.getName()+" has the following items:\n");
+                    System.out.println("\n"+c.getName()+" has the following items:\n");
                     for (Item i : c.getInventory()) {
                         System.out.println(i.getName());
                     }

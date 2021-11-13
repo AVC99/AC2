@@ -9,13 +9,13 @@ public class Controller {
     private Scanner scanner= new Scanner(System.in);
 
 
-
+    /**
+     * carga los json a una party
+     */
     public void loadFiles(){
         try {
             System.out.println("Loading party file...\n");
-            String name = "party.json";
-            //String name = scanner.next();------------------------------------------------------------------------ Canviar al final
-            p = new ReadWriteFile().loadParty(name);
+            p = new ReadWriteFile().loadParty("party.json");
             System.out.println("Party name: "+ p.getName());
             System.out.println("Party description: " + p.getDescription());
         }catch (InputMismatchException e){
@@ -25,6 +25,9 @@ public class Controller {
 
     }
 
+    /**
+     * Funcion que repite el programa hasta que el usuario inserta el 7
+     */
     public void run() {
         int option;
         loadFiles();
@@ -32,7 +35,11 @@ public class Controller {
             do {
                 menu.showMenu();
                 option = menu.askForInteger("Enter an option: ");
-                executeOption(option);
+                if(option>=1 && option<=7){
+                    executeOption(option);
+                }else {
+                    System.out.println("Introduce a correct option");
+                }
             } while (option != 7);
         }catch (InputMismatchException e){
             System.out.println("Please enter a correct input");
@@ -40,6 +47,10 @@ public class Controller {
         }
     }
 
+    /**
+     * Funcion que llama a todas las funciones que ofrece el menu
+     * @param option
+     */
     private void executeOption(int option) {
         String name;
         switch (option) {
@@ -74,7 +85,7 @@ public class Controller {
                     Scanner scanner=new Scanner(System.in);
                     System.out.println("How much extra weight? ");
                     double extraWeight = scanner.nextDouble();
-                    p.checkCharWeight(name,extraWeight);
+                   p.checkCharWeight(name,extraWeight);
                 }catch (InputMismatchException e){
                     System.out.println("Please enter a correct value");
                     e.printStackTrace();

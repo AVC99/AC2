@@ -5,7 +5,7 @@ public class Party {
     private String description;
     private ArrayList<Character> members;
 
-    private Party(String name, String description, ArrayList<Character> members) {
+    public Party(String name, String description, ArrayList<Character> members) {
         this.name = name;
         this.description = description;
         this.members = members;
@@ -23,12 +23,19 @@ public class Party {
         return description;
     }
 
+    /**
+     * Funcion que muestra todos los characters y su nivel
+     */
     public void showCharacters(){
         System.out.println();
         for(int i=0; i<this.members.size();i++){
             System.out.println(this.getMembers().get(i).getName()+" - lvl "+this.getMembers().get(i).getLevel());
         }
     }
+
+    /**
+     * Funcion que muestra el nivel medio de la party
+     */
     public void showAvgLvl(){
         double total=0;
         for(int i=0; i<this.members.size();i++){
@@ -36,6 +43,11 @@ public class Party {
         }
         System.out.println("\nThe party's average level is "+total/this.members.size());
     }
+
+    /**
+     *Funcion que muestra los items de personaje/s que coincida el nombre
+     * @param name
+     */
     public void showCharItems(String name){
         boolean found=false;
             for (Character c : this.members) {
@@ -52,6 +64,11 @@ public class Party {
             }
 
     }
+
+    /**
+     *Funcion que muestra el oro que vale los items de los personaje/s con los que coincide el nombre
+     * @param name
+     */
     public void showCharAsset(String name){
         boolean found=false;
 
@@ -69,6 +86,12 @@ public class Party {
                 System.out.println("Couldn't find the character.");
             }
     }
+
+    /**
+     *Funcion que comprueba si los personajes pueden llevar mas items
+     * @param name
+     * @param extraWeight
+     */
     public void checkCharWeight(String name, Double extraWeight){
         boolean found=false;
         for (Character c : this.members) {
@@ -91,9 +114,13 @@ public class Party {
         }
 
     }
+    /**
+     * Funcion que mira si un personaje puede llevar mas peso y si puede llevar mas le añade el item al inventario
+     * @param name
+     * @param newItem
+     */
     public void addItemToChar(String name, Item newItem){
         boolean found= false;
-
         for (Character c : this.members) {
             double currentWeight=0;
             if (c.getName().toLowerCase().contains(name.toLowerCase())) {

@@ -13,7 +13,7 @@ public class Menu {
                 System.out.print(message);
                 return scanner.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Error");
+                System.out.println("Error, please input a number");
             } finally {
                 scanner.nextLine();
             }

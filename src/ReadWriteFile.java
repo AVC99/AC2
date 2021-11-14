@@ -6,7 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ReadWriteFile {
-    private Gson gson=new Gson();
+    private Gson gson;
+
+    public ReadWriteFile() {
+        this.gson = new Gson();
+    }
 
     /**
      * Carga la party

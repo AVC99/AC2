@@ -4,10 +4,15 @@ import java.util.Scanner;
 
 public class Controller {
 
-    private Menu menu = new Menu();
+    private Menu menu ;
     private Party p;
-    private Scanner scanner= new Scanner(System.in);
+    private Scanner scanner;
 
+    public Controller() {
+        this.menu = new Menu();
+        this.p = null;
+        this.scanner = new Scanner(System.in);
+    }
 
     /**
      * carga los json a una party
